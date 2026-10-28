@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>COS30045 — Week 6 | TV Energy Visualisation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="page-header">
+      <p class="eyebrow">COS30045 · Data Visualisation · Week 6</p>
+      <h1>TV Energy Consumption Explorer</h1>
+      <p>Explore how annual TV energy consumption varies across screen technologies, sizes and energy star ratings.</p>
+      <p id="data-status" class="status" role="status">Loading TV records…</p>
+    </header>
+
+    <section class="panel" aria-labelledby="histogram-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Exercises 6.1 &amp; 6.2</p>
+          <h2 id="histogram-title">Energy Consumption Histogram</h2>
+          <p>Each bar counts TV records within a 200 kWh/year interval.</p>
+        </div>
+        <p id="histogram-count" class="record-count" aria-live="polite"></p>
+      </div>
+      <div class="controls">
+        <div>
+          <p class="control-title">Screen technology</p>
+          <div id="histogram-filters" class="button-group" aria-label="Histogram screen technology filters"></div>
+        </div>
+        <div>
+          <label class="control-title" for="min-screen-size">Minimum screen size</label>
+          <select id="min-screen-size">
+            <option value="0">All sizes</option>
+            <option value="40">40 inches or larger</option>
+            <option value="55">55 inches or larger</option>
+            <option value="65">65 inches or larger</option>
+            <option value="75">75 inches or larger</option>
+          </select>
+        </div>
+      </div>
+      <div id="histogram" class="chart" aria-label="Histogram of annual TV energy consumption"></div>
+      <p class="note">Fixed 200 kWh/year bins (0–2800); the frequency axis adjusts to the selected records. Hover over a bar for counts.</p>
+    </section>
+
+    <section class="panel" aria-labelledby="scatter-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Exercises 6.3 &amp; 6.4</p>
+          <h2 id="scatter-title">Energy Consumption vs Star Rating</h2>
+          <p>Each point represents one TV model; colours indicate screen technology.</p>
+        </div>
+        <p id="scatter-count" class="record-count" aria-live="polite"></p>
+      </div>
+      <div class="controls">
+        <div>
+          <p class="control-title">Screen technology</p>
+          <div id="scatter-filters" class="button-group" aria-label="Scatter plot screen technology filters"></div>
+        </div>
+        <div class="legend" aria-label="Screen technology colour legend">
+          <span><i class="swatch led"></i> LED</span>
+          <span><i class="swatch lcd"></i> LCD</span>
+          <span><i class="swatch oled"></i> OLED</span>
+        </div>
+      </div>
+      <div id="scatterplot" class="chart" aria-label="Scatter plot of TV star rating and annual energy consumption"></div>
+      <p class="note">Hover or focus a point to see its brand, model, screen size, screen technology, star rating and energy consumption.</p>
+    </section>
+    <footer>Source: Ex6_TVdata_withStar.csv · COS30045 Week 6 exercises</footer>
+  </main>
+  <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="js/histogram.js"></script>
+  <script src="js/scatterplot.js"></script>
+</body>
+</html>
